@@ -1,0 +1,50 @@
+<div class="todo">
+    <div class="demo-page-properties-horizontal-style">
+        <h1 class="title-label">New Todo</h1>
+        <input type="text" id="default-value" [(ngModel)]="newTodo" autocomplete="off"
+            (ngModelChange)="updateIsDisabled()" />
+        <button class="newTodoBtn" solid [disabled]='isDisabled' color="primary" (click)="addTodo();resetRadio()">
+            <label>Add New Task</label>
+        </button>
+    </div>
+
+    <mat-radio-group name="status">
+        <div class="radio-grid">
+                <mat-radio-group class="radio-3row-grid" [disabled]="disabledState" [(ngModel)]="filter" (click)="filterTodo(filter)" [alloyError]="errorMessage">
+                    <mat-radio-button value="all">
+                        <label>All</label>
+                    </mat-radio-button>
+                    <mat-radio-button value="active">
+                        Active
+                    </mat-radio-button>
+                    <mat-radio-button value="completed">
+                        Completed
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+    </mat-radio-group>
+    <mat-card>
+        <mat-card-content>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%;">
+                <ng-container matColumnDef="title">
+                    <th mat-header-cell *matHeaderCellDef> Task </th>
+                    <td mat-cell *matCellDef="let element" [ngClass]="!element.completed ? 'null' : 'strikethrough'">
+                        {{element.name}} </td>
+                </ng-container>
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef> Actions </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button class="toggleBtn" mat-raised-button (click)="toggleDone(element.id)"
+                            color="secondary">{{!element.completed?"Completed":"Uncompleted"}}</button>
+                        <button class="deleteBtn" mat-raised-button (click)="deleteTodo(element.id)"
+                            color="secondary">Delete</button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+        </mat-card-content>
+    </mat-card>
+</div>

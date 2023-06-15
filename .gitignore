@@ -1,0 +1,7 @@
+node_modules
+build
+
+# System Files
+.vs
+.DS_Store
+.vscode

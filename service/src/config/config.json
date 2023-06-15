@@ -1,0 +1,12 @@
+{
+    "development": {
+        "type": "sqlite",
+        "database": "service-db.development.sqlite",
+        "synchronize": true,
+        "logging": false,
+        "migrationsRun": false,
+        "migrations": [
+            "./dist/migration/**/*.js"
+        ]
+    }
+}
