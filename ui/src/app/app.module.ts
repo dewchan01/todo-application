@@ -9,12 +9,15 @@ import { MatRadioModule} from '@angular/material/radio';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiModule as TodoAppApiModule, BASE_PATH as TodoAppBasePath } from '@dewchan/todo-app-ng13-sdk';
+import { AppConstants } from './app-constants/app-constants';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodoComponent
+    TodoComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,9 +25,12 @@ import { MatTableModule } from '@angular/material/table';
     MatRadioModule,
     BrowserAnimationsModule,
     FormsModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule
   ],
-  providers: [TodoService],
+  providers: [TodoService,
+    { provide: TodoAppBasePath, useValue: AppConstants.TodoAppServiceUrl },
+  ],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

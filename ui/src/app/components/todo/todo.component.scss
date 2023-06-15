@@ -1,23 +1,68 @@
-.strikethrough{
+.strikethrough {
     text-decoration: line-through;
-}
-.newTodoBtn{
+  }
+  
+  .newTodoBtn {
     margin-left: 10px;
-    padding: 10px 10px 7px 10px;
-}
-.title-label{
+    padding: 10px;
+    border: none;
+    background-color: #2196f3;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .title-label {
     margin-left: 10px;
     margin-right: 10px;
-}
-
-.deleteBtn{
+  }
+  
+  .deleteBtn {
     margin-left: 10px;
-    padding: 10px 10px 7px 10px;
-}
-
-.toggleBtn{
+    padding: 10px;
+    border: none;
+    background-color: #f44336;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .toggleBtn {
     margin-left: 10px;
-    padding: 10px 10px 7px 10px;
-}
+    padding: 10px;
+    border: none;
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  /* Add spacing to the table */
+  .mat-table {
+    margin-top: 20px;
+  }
+  
+  /* Add spacing to the table cells */
+  th.mat-header-cell,
+  td.mat-cell {
+    padding: 10px;
+  }
 
-
+  /* Reduce the brightness of the radio buttons */
+.mat-radio-button {
+    opacity: 0.8;
+  }
+  
+  /* Add spacing to the radio buttons */
+  .mat-radio-button {
+    margin-right: 10px;
+  }
+  
+  /* Increase the size of the radio buttons */
+  .mat-radio-button .mat-radio-inner-circle {
+    width: 12px;
+    height: 12px;
+  }
+  
+  /* Increase the size of the radio button labels */
+  .mat-radio-label {
+    font-size: 14px;
+  }
+  

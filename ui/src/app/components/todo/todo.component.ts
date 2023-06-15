@@ -20,7 +20,7 @@ export class TodoComponent implements OnInit {
     constructor(private service: TodoService) { }
 
     public updateIsDisabled() {
-        this.isDisabled = !(this.newTodo.length > 0);
+        this.isDisabled = !(this.newTodo.length > 0) || this.newTodo.trim() === '';
     }
 
     public ngOnInit() {
@@ -42,9 +42,13 @@ export class TodoComponent implements OnInit {
     }
 
     public deleteTodo(id: number) {
-        this.service.deleteTodo(id).subscribe();
-        this.ngOnInit();
-    }
+        this.service.deleteTodo(id).subscribe(() => {
+          this.service.loadData().subscribe((result) => {
+            this.dataSource = result;
+          });
+        });
+      }
+      
 
     public async toggleDone(id: number) {
         (await this.service.toggleDone(id)).subscribe((_) => {
@@ -55,6 +59,7 @@ export class TodoComponent implements OnInit {
     public filterTodo(filter: string) {
         this.service.filterTodo(filter).subscribe((result) => {
             this.dataSource = result;
+            console.log(this.dataSource)
         });
     }
 
